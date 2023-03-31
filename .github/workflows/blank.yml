@@ -15,23 +15,21 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  deploy:
+    name: Deploy to EC2
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+    steps:
+         - name: Checkout the files
+           uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
-        env:
-         SSH_PRIVATE_KEY: ${ { secrets.EC2_SSH_KEY }}
-         REMOTE_HOST: ${ { secrets.HOST_DNS }}
-         REMOTE_USER: ${ { secrets.USERNAME }}
-         TARGET: ${ { secrets.TARGET_DIR }}
+         - name: Run a one-line script
+           run: echo Hello, world!
+         - name: Deploy to Server 1
+           uses: easingthemes/ssh-deploy@main
+           env:
+              SSH_PRIVATE_KEY: ${ { secrets.EC2_SSH_KEY }}
+              REMOTE_HOST: ${ { secrets.HOST_DNS }}
+              REMOTE_USER: ${ { secrets.USERNAME }}
+              TARGET: ${ { secrets.TARGET_DIR }}

@@ -18,11 +18,11 @@ function App() {
     
     {/* <DropdownComponent></DropdownComponent> */}
     <BrowserRouter>
-    <Switch>
+  
           <Route path="/">
           <Iphone></Iphone>
           </Route>
-        </Switch>
+        
     
       </BrowserRouter>
     
